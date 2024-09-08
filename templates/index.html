@@ -1,8 +1,8 @@
 {% extends 'base.html' %} {% block head %}
-<title>Task Master</title>
+<title>Task Track</title>
 {% endblock %} {% block body %}
 <div class="content">
-  <h1>TaskMaster</h1>
+  <h1>Task Track 📝</h1>
   {% if tasks|length<1 %}
   <h4>There are no tasks, create one below</h4>
   {% else %}
@@ -18,7 +18,7 @@
       <td class="task-content">{{ task.content }}</td>
       <td class="task-date">{{ task.date_created.date() }}</td>
       <td>
-        <a href="{{ url_for('delete', id=task.id) }}"">Delete</a>
+        <a class="delete" href="{{ url_for('delete', id=task.id) }}"">Delete</a>
         <br />
         <a href="{{ url_for('update', id=task.id) }}">Update</a>
       </td>
@@ -28,7 +28,7 @@
   {% endif %}
 
   <form action="/" method="POST">
-    <input type="text" name="content" id="content" />
+    <input type="text" name="content" id="content" required/>
     <input type="submit" value="Add Task" />
   </form>
 </div>
